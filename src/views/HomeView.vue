@@ -20,11 +20,25 @@ const showtext = ref(false);
   opacity: 0;
 }
 
+/* default property is opacity 1
 .fade-enter-to{
-  /* background-color: blue; */
+  /* background-color: blue; 
   opacity: 1;
-}
+} */
 .fade-enter-active{
+  transition: all 5s ease;
+
+}
+/* default property is opacity 1
+.fade-leave-from{
+  opacity: 1;
+
+} */
+.fade-leave-to{
+  opacity: 0;
+
+}
+.fade-leave-active{
   transition: all 5s ease;
 
 }
