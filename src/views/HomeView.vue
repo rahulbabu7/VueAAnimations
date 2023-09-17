@@ -1,21 +1,21 @@
 <script setup>
-import { ref } from 'vue';
-const showtext = ref(false); 
+import { ref } from "vue";
+const showtext = ref(true);
 </script>
 
 <template>
   <main>
-    <Transition name="fade">
-
-      <h1 v-if="showtext">HelloWorld</h1> 
-    </Transition>
-
- <button @click="showtext = !showtext"> Toggle </button>
+    <section>
+      <Transition name="fade">
+        <h1 v-if="showtext">HelloWorld</h1>
+        <h1 v-else>BIE</h1>
+      </Transition>
+    </section>
+    <button @click="showtext = !showtext">Toggle</button>
   </main>
 </template>
 <style scoped>
-
-.fade-enter-from{
+.fade-enter-from {
   /* background-color: yellow; */
   opacity: 0;
 }
@@ -25,21 +25,27 @@ const showtext = ref(false);
   /* background-color: blue; 
   opacity: 1;
 } */
-.fade-enter-active{
+.fade-enter-active {
   transition: all 5s ease;
-
 }
 /* default property is opacity 1
 .fade-leave-from{
   opacity: 1;
 
 } */
-.fade-leave-to{
+.fade-leave-to {
   opacity: 0;
-
 }
-.fade-leave-active{
+.fade-leave-active {
   transition: all 5s ease;
-
+}
+section{
+  position: relative;
+}
+h1{
+  position:absolute;
+}
+button{
+  margin-top: 50px;
 }
 </style>
