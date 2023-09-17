@@ -20,6 +20,7 @@ const names = ref(['sunny','amal'])
       
         <li>
          {{ name }}
+         
         </li>
         
       </ul>
