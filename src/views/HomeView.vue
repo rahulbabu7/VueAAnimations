@@ -2,7 +2,12 @@
 import { ref } from "vue";
 // const showtext = ref(true);
 const textInput = ref("");
-const names = ref(['sunny','amal'])
+const names = ref(['sunny','amal']);
+
+const addName = ()=>{
+  names.value.unshift(textInput.value);  //unshift is used to push to the begining of the array
+  textInput.value = ""; 
+}
 </script>
 
 <template>
@@ -15,8 +20,15 @@ const names = ref(['sunny','amal'])
     </section>
     <button @click="showtext = !showtext">Toggle</button> -->
     <section>
-      <input type="text" placeholder="Enter the name" v-model="textInput">
-      <ul v-for="name in names">
+      <input 
+      type="text"
+       placeholder="Enter the name" 
+       v-model="textInput"
+       @keypress.enter="addName"  
+       >
+       <!--  @keypress.enter = whenver i press the enter key the function should be executed -->
+      
+      <ul v-for="(name,index) in names" :key="index">
       
         <li>
          {{ name }}
