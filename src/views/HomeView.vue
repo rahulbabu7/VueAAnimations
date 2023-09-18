@@ -5,14 +5,22 @@ const textInput = ref("");
 const names = ref(['sunny','amal']);
 
 const addName = ()=>{
-  names.value.unshift(textInput.value);  //unshift is used to push to the begining of the array
+  // names.value.unshift(textInput.value);  //unshift is used to push to the begining of the array
+  names.value.push(textInput.value);
+ 
   textInput.value = ""; 
+}
+const removeName = (id)=>{
+// names.value.pop();    opop only deletes the last element only
+names.value.splice(id,1);
+textInput.value = "";
 }
 </script>
 
 <template>
   <main>
     <!-- <section>
+      cannot have more than one child inside the animation ie not more than 1 child
       <Transition name="fade">
         <h1 v-if="showtext">HelloWorld</h1>
         <h1 v-else>BIE</h1>
@@ -27,15 +35,18 @@ const addName = ()=>{
        @keypress.enter="addName"  
        >
        <!--  @keypress.enter = whenver i press the enter key the function should be executed -->
+       <TransitionGroup name="invites">
+        <ul v-for="(name,index) in names" :key="index">
       
-      <ul v-for="(name,index) in names" :key="index">
-      
-        <li>
+          <li @click="removeName(index)">
          {{ name }}
          
         </li>
-        
       </ul>
+        </TransitionGroup>
+       
+        
+    
     </section>
   </main>
 </template>
@@ -102,5 +113,24 @@ li{
   text-align: center;
   cursor: pointer;
 
+}
+
+
+/* some error transition here so i added the names from nnshift to push
+i think the error may be occured in the ul block */
+.invites-enter-from {
+  
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+/* /* default property is opacity 1 */
+.invites-enter-to{
+  
+  opacity: 1;
+  transform: scale(1);
+} 
+.invites-enter-active {
+  transition:  all 0.5s ease;
 }
 </style>
