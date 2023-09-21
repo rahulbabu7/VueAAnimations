@@ -1,1 +1,1 @@
-Animation vue
+Animation
